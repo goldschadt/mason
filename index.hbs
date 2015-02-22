@@ -1,0 +1,24 @@
+{{!< default}}
+{{! The tag above means - insert everything in this file into the {body} of the default.hbs template }}
+             
+{{! The big featured header }} {{> top-menu}}
+ <header class="main-header {{#if @blog.cover}}" style="background-image: url({{@blog.cover}}){{else}}no-cover{{/if}}">
+    <nav class="main-nav overlay clearfix">
+    {{#if @blog.logo}}<a class="blog-logo-center" href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>{{/if}}     
+    </nav>
+    <div class="vertical">
+    <a href="javascript:chooseStyle('none', 60)"><i class="fa fa-bookmark-o"></i>Light</a>
+    <a href="javascript:chooseStyle('medium', 60)"><i class="fa fa-pencil fa-fw"></i>Mellow</a>
+    <a href="javascript:chooseStyle('dark', 60)"><i class="fa fa-bookmark"></i>Dark</a> 
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{@blog.title}}</h1>
+            <h2 class="page-description">{{@blog.description}}</h2>
+            {{> search}}
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>              
+{{! The main content area on the homepage }}
+<main id="content" class="content" role="main">   
+{{> nav-tabs3}}
+</main>

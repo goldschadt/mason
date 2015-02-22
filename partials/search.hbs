@@ -1,0 +1,15 @@
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{{asset "js/jquery.ghostHunter.min.js"}}"></script>
+<script src="{{asset "js/jquery.ghostHunter.js"}}"></script>                                                      
+<form style="text-align:center">
+    <input id="search-field" placeholder="  search posts..."/>
+</form>
+<section id="results" style="text-align:center"></section>
+<script>
+    $("#search-field").ghostHunter({
+        results   : "#results",  
+      });    
+  function clearResults() {
+          searchField.clear();
+        }  
+</script>

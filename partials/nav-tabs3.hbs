@@ -1,0 +1,147 @@
+<link href="{{asset "css/bootstrap.css"}}" rel="stylesheet" />
+
+
+
+
+<div id="nav-tabs2" class="container main-container">
+  <div role="tabpanel">
+
+    
+  <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#panel-1" aria-controls="panel-1" role="tab" data-toggle="tab">Panel 1</a></li>
+      <li role="presentation"><a href="#panel-2" aria-controls="panel-2" role="tab" data-toggle="tab">Panel 2</a></li>
+      <li role="presentation"><a href="#panel-3" aria-controls="panel-3" role="tab" data-toggle="tab">Panel 3</a></li>
+      <li role="presentation"><a href="#panel-4" aria-controls="panel-4" role="tab" data-toggle="tab">Panel 4</a></li>
+                     <li role="presentation"><a href="#panel-5" aria-controls="panel-5" role="tab" data-toggle="tab">Panel 5</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="panel-1">    
+        <div class="row masonry-container">
+                    
+   {{#foreach posts}} 
+<article class="col-md-4 col-sm-6 item">  
+    <header class="post-header"> 
+        <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+    </header>
+<table>
+  <tr>
+    <div><a href="{{url}}"><header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}"></a></div>      
+    <div><section class="post-excerpt">
+        <p>{{excerpt words="56"}} </p><p><br></p><p class="read-more"><a class="read-more"><a href="{{url}}" class="button">Read More</a></p>
+    </section></div>
+  </tr>
+  <tr>
+    <td></td>
+    <td><footer class="post-meta"><i class="fa fa-pencil-square-o"></i>
+        {{#if author.image}}<img class="author-thumb" src="{{author.image}}" alt="Author image" nopin="nopin" />{{/if}}
+        {{author}}   
+        {{tags prefix=" on "}}
+       <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+    </footer></td>
+  </tr>
+</table>     
+         
+</article>
+{{/foreach}}
+          
+      </div> <!--/.masonry-container  -->
+ </div><!--/.tab-panel -->
+
+      <div data-sr role="tabpanel" class="tab-pane" id="panel-2">
+        <div class="row masonry-container">{{> loop}}
+              
+        </div> <!--/.masonry-container  -->
+      </div><!--/.tab-panel -->
+
+        
+      <div role="tabpanel" class="tab-pane" id="panel-3">
+        <div class="row masonry-container">{{> loop-list}}
+              </div> <!--/.masonry-container  -->
+      </div><!--/.tab-panel -->
+
+          
+      <div role="tabpanel" class="tab-pane" id="panel-4">
+        <div class="row masonry-container"> 
+{{#foreach posts}} 
+<article class="col-md-3 col-sm-6 item">  
+    <header class="post-header"> 
+        <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+    </header>
+<table>
+  <tr>
+      
+    <div><section class="post-excerpt">
+        <p>{{excerpt words="56"}} </p><p><br></p><p class="read-more"><a class="read-more"><a href="{{url}}" class="button">Read More</a></p>
+    </section></div>
+  </tr>
+  <tr>
+    <td></td>
+    <td><footer class="post-meta"><i class="fa fa-pencil-square-o"></i>
+        {{#if author.image}}<img class="author-thumb" src="{{author.image}}" alt="Author image" nopin="nopin" />{{/if}}
+        {{author}}   
+        {{tags prefix=" on "}}
+       <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+    </footer></td>
+  </tr>
+</table>     
+         
+</article>
+{{/foreach}}
+        </div> <!--/.masonry-container  -->
+      </div><!--/.tab-panel -->
+        
+        <div role="tabpanel" class="tab-pane" id="panel-5">
+        <div class="row masonry-container">
+            {{#foreach posts}} 
+<article class="col-md-4 col-sm-6 item">  
+  <!--    <header class="post-header"> 
+      <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2> 
+    </header> -->
+
+    <div><a href="{{url}}">{{{title}}}<header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}"></a></div>      
+
+
+         
+</article>
+{{/foreach}}
+              </div> <!--/.masonry-container  -->
+      </div><!--/.tab-panel -->
+
+
+    </div> <!--/.tab-content -->
+  </div> <!--/.tab-panel  -->
+</div><!-- /.container -->
+
+
+<!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{{asset "js/libs/jquery-1.11.1.min.js"}}"></script>
+    <script src="{{asset "js/bootstrap.min.js"}}"></script>
+    <script src="{{asset "js/libs/imagesloaded.3.1.8.min.js"}}"></script>
+    <script src="{{asset "js/libs/jquery.masonry.3.2.1.min.js"}}"></script>
+    <script src="{{asset "js/base.js"}}" type="text/javascript"></script>
+    <script type="text/javascript">
+var $container = $('.masonry-container');
+$container.imagesLoaded( function () {
+  $container.masonry({
+    columnWidth: '.item',
+    itemSelector: '.item'
+  });   
+});
+      
+$('a[data-toggle=tab]').each(function () {
+  var $this = $(this);
+ 
+  $this.on('shown.bs.tab', function () {
+    $container.imagesLoaded( function () {
+      $container.masonry({
+        columnWidth: '.item',
+        itemSelector: '.item'
+      });   
+    });  
+  });
+});
+</script>

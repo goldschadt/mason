@@ -1,0 +1,40 @@
+{{! Previous/next page links - only displayed on page 2+ }}
+
+<div class="extra-pagination inner">
+    {{pagination}}
+</div>
+
+{{! This is the post loop - each post will be output using this markup }}
+{{#foreach posts}}
+
+<article data-sr class="{{post_class}}">   
+    <header class="post-header">
+         {{#if featured}}
+                <span class="post-stub-tag">
+  <span class="glyphicon glyphicon-star" aria-hidden="true">Featured</span> </span>
+            {{/if}}
+        <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+    </header>
+<table>
+  <tr>
+    <div><a href="{{url}}"><header class="main-header post-head {{#if image}}" style="background-image: url({{image}}){{else}}no-cover{{/if}}"></a></div>      
+    <div><section class="post-excerpt">
+        <p>{{excerpt words="56"}} </p><p><br></p><p class="read-more"><a class="read-more"><a href="{{url}}" class="button">Read More</a></p>
+    </section></div>
+  </tr>
+  <tr>
+    <td></td>
+    <td><footer class="post-meta"><i class="fa fa-pencil-square-o"></i>
+        {{#if author.image}}<img class="author-thumb" src="{{author.image}}" alt="Author image" nopin="nopin" />{{/if}}
+        {{author}}   
+        {{tags prefix=" on "}}
+       <time class="post-date" datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+    </footer></td>
+  </tr>
+</table>     
+         
+</article>
+{{/foreach}}
+
+{{! Previous/next page links - displayed on every page }}
+{{pagination}}
